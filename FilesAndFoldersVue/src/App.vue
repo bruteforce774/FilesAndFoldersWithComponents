@@ -1,47 +1,48 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+/**
+ * App.vue - Day 1: Just testing Breadcrumbs component
+ *
+ * We're starting simple - no Pinia yet, just hardcoded data
+ * to understand how props work in Vue
+ */
+import { ref } from 'vue'
+import Breadcrumbs from './components/Breadcrumbs.vue'
+
+// Hardcoded breadcrumb path for testing
+// This simulates being in: Handlelister > Oktober
+const breadcrumbPath = ref(['Handlelister', 'Oktober'])
+
+// Let's also test what happens with an empty path (root folder)
+const emptyPath = ref([])
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
   <main>
-    <TheWelcome />
+    <h1>Filer og mapper - Day 1 Test</h1>
+
+    <h2>Test 1: With breadcrumb path</h2>
+    <Breadcrumbs :texts="breadcrumbPath" />
+
+    <h2>Test 2: At root (empty path)</h2>
+    <Breadcrumbs :texts="emptyPath" />
+
+    <h2>Test 3: No prop passed at all</h2>
+    <Breadcrumbs />
   </main>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+main {
+  padding: 2rem;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+h1 {
+  color: #42b883;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+h2 {
+  margin-top: 2rem;
+  color: #666;
+  font-size: 1.2rem;
 }
 </style>
