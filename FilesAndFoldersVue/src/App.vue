@@ -14,6 +14,10 @@ const breadcrumbPath = ref(['Handlelister', 'Oktober'])
 
 // Let's also test what happens with an empty path (root folder)
 const emptyPath = ref([])
+
+function changePath() {
+  breadcrumbPath.value = ['Handlelister', 'Oktober', 'Uke 1']
+}
 </script>
 
 <template>
@@ -28,6 +32,8 @@ const emptyPath = ref([])
 
     <h2>Test 3: No prop passed at all</h2>
     <Breadcrumbs />
+
+    <button @click="changePath">Forandre sti</button>
   </main>
 </template>
 
@@ -44,5 +50,8 @@ h2 {
   margin-top: 2rem;
   color: #666;
   font-size: 1.2rem;
+}
+button {
+  margin-top: 2rem; 
 }
 </style>
