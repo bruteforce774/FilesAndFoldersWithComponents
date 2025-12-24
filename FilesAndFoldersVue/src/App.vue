@@ -18,6 +18,11 @@ const emptyPath = ref([])
 function changePath() {
   breadcrumbPath.value = ['Handlelister', 'Oktober', 'Uke 1']
 }
+
+function goUpOneLevel () {
+  if(breadcrumbPath.value.length > 0) 
+    breadcrumbPath.value = breadcrumbPath.value.slice(0, -1)
+}
 </script>
 
 <template>
@@ -34,6 +39,7 @@ function changePath() {
     <Breadcrumbs />
 
     <button @click="changePath">Forandre sti</button>
+    <button @click="goUpOneLevel">Gå opp ett nivå</button>
   </main>
 </template>
 
