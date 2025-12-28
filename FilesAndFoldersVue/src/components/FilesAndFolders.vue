@@ -14,6 +14,7 @@ const props = defineProps<{
     <li v-for="item in props.items" :key="item.id">
       <span v-if="item.content">🗎</span>
       <span v-else>📁</span>
+      {{ item.name }}
     </li>
   </fieldset>
 </template>
