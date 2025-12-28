@@ -3,8 +3,8 @@ import type { FileOrFolder } from '@/types';
 
 const props = defineProps<{
   items: FileOrFolder[],
-  parentFolder: number | false,
-  markedFilesAndFolders: number[],
+  parentFolder?: number | false,
+  markedFilesAndFolders?: number[],
 }>();
 </script>
 
