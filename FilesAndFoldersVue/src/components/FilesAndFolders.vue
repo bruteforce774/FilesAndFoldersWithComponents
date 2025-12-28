@@ -18,3 +18,9 @@ const props = defineProps<{
     </li>
   </fieldset>
 </template>
+
+<style scoped>
+  li {
+    list-style: none;
+  }
+</style>
