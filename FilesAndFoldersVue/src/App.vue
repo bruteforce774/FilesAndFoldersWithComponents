@@ -7,6 +7,7 @@
  */
 import { ref } from 'vue'
 import Breadcrumbs from './components/Breadcrumbs.vue'
+import FilesAndFolders from './components/FilesAndFolders.vue'
 
 // Hardcoded breadcrumb path for testing
 // This simulates being in: Handlelister > Oktober
@@ -14,6 +15,11 @@ const breadcrumbPath = ref(['Handlelister', 'Oktober'])
 
 // Let's also test what happens with an empty path (root folder)
 const emptyPath = ref([])
+
+const testItems = ref([
+  { id: 1, name: 'Oktober' },  // folder (no content)
+  { id: 2, name: 'notes.txt', content: 'abc' }  // file (has content)
+])
 
 function changePath() {
   breadcrumbPath.value = ['Handlelister', 'Oktober', 'Uke 1']
@@ -40,6 +46,8 @@ function goUpOneLevel () {
 
     <button @click="changePath">Forandre sti</button>
     <button @click="goUpOneLevel">Gå opp ett nivå</button>
+    <h2>Test FilesAndFolders</h2>
+    <FilesAndFolders :items="testItems" />
   </main>
 </template>
 
