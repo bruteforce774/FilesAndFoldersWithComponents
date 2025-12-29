@@ -7,6 +7,7 @@
  */
 import { ref } from 'vue'
 import Breadcrumbs from './components/Breadcrumbs.vue'
+import FilesAndFolders from './components/FilesAndFolders.vue'
 
 // Hardcoded breadcrumb path for testing
 // This simulates being in: Handlelister > Oktober
@@ -14,6 +15,20 @@ const breadcrumbPath = ref(['Handlelister', 'Oktober'])
 
 // Let's also test what happens with an empty path (root folder)
 const emptyPath = ref([])
+
+const testItems = ref([
+  { id: 1, name: 'Oktober' },  // folder (no content)
+  { id: 2, name: 'notes.txt', content: 'abc' }  // file (has content)
+])
+
+function changePath() {
+  breadcrumbPath.value = ['Handlelister', 'Oktober', 'Uke 1']
+}
+
+function goUpOneLevel () {
+  if(breadcrumbPath.value.length > 0) 
+    breadcrumbPath.value = breadcrumbPath.value.slice(0, -1)
+}
 </script>
 
 <template>
@@ -28,6 +43,11 @@ const emptyPath = ref([])
 
     <h2>Test 3: No prop passed at all</h2>
     <Breadcrumbs />
+
+    <button @click="changePath">Forandre sti</button>
+    <button @click="goUpOneLevel">Gå opp ett nivå</button>
+    <h2>Test FilesAndFolders</h2>
+    <FilesAndFolders :items="testItems" />
   </main>
 </template>
 
@@ -44,5 +64,8 @@ h2 {
   margin-top: 2rem;
   color: #666;
   font-size: 1.2rem;
+}
+button {
+  margin-top: 2rem; 
 }
 </style>
