@@ -22,16 +22,16 @@ describe('fileStore - getViewState', () => {
     expect(viewState.currentFolder.name).toBe('Rotmappe')
 
     // Which items are at root? Look at initial data in fileStore.ts
-  // - { id: 1, name: 'Handlelister' } - no parentId = root folder
-  // - { id: 2, name: 'Ting som skal fikses' } - no parentId = root folder  
-  // - { id: 6, name: 'notater.txt', content: 'abc' } - no parentId = root file
+    // - { id: 1, name: 'Handlelister' } - no parentId = root folder
+    // - { id: 2, name: 'Ting som skal fikses' } - no parentId = root folder  
+    // - { id: 6, name: 'notater.txt', content: 'abc' } - no parentId = root file
 
     expect(viewState.folders).toHaveLength(2) // Handlelister, Ting som skal fikses
     expect(viewState.files).toHaveLength(1) // notater.txt
 
     // More specific assertions
     expect(viewState.folders.map(f => f.name)).toContain('Handlelister')
-    expect(viewState.files[0].name).toBe('notater.txt')
+    expect(viewState.files[0]?.name).toBe('notater.txt')
   })
 
   it('Test 2: should show items inside a folder when folder is selected', () => {
