@@ -29,6 +29,10 @@ function goUpOneLevel () {
   if(breadcrumbPath.value.length > 0) 
     breadcrumbPath.value = breadcrumbPath.value.slice(0, -1)
 }
+
+function handleSelected(id: number) {
+  console.log('Selected item with id:', id)
+}
 </script>
 
 <template>
@@ -47,7 +51,7 @@ function goUpOneLevel () {
     <button @click="changePath">Forandre sti</button>
     <button @click="goUpOneLevel">Gå opp ett nivå</button>
     <h2>Test FilesAndFolders</h2>
-    <FilesAndFolders :items="testItems" />
+    <FilesAndFolders :items="testItems" @selected="handleSelected" />
   </main>
 </template>
 

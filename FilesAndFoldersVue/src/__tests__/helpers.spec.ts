@@ -12,7 +12,7 @@ describe('Helper Functions', () => {
   })
 
   it ('should identify a folder by absence of content property', () => {
-    const folder = { id: 2, name: 'MyFolder' }
+    const folder = { id: 2, name: 'MyFolder', content: undefined }
     expect(isFile(folder)).toBe(false);
   })
 })
