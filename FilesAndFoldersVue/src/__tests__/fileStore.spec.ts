@@ -63,5 +63,18 @@ describe('fileStore - getViewState', () => {
     // What should you test?
     // - selectedFile should be the file object
     // - selectedFile should have content property
+
+    // The selected file should be set
+    expect(viewState.selectedFile).not.toBeNull()
+    expect(viewState.selectedFile?.name).toBe('notater.txt')
+    expect(viewState.selectedFile?.content).toBeDefined()
+    expect(viewState.selectedFile?.content).toBe('abc')
+
+    // The current item should also be the file
+    expect(viewState.current?.name).toBe('notater.txt')
+
+    // Since notater has no parentId, we're stil at root folder
+    expect(viewState.currentFolder.name).toBe('Rotmappe')
+    expect(viewState.currentFolder.id).toBe(null)
   })
 })
