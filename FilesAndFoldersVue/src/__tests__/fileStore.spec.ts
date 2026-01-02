@@ -44,6 +44,13 @@ describe('fileStore - getViewState', () => {
     // What should you test?
     // - currentFolder should be the folder with id: 1
     // - files and folders should only include items with parentId: 1
+
+    expect(viewState.currentFolder.name).toBe('Handlelister') // currentFolder should be Handlelister
+    expect(viewState.currentFolder.id).toBe(1) // currentFolder id should be 1
+    expect(viewState.folders).toHaveLength(1) // Only Oktober folder inside Handlelister
+    expect(viewState.folders[0]?.name).toBe('Oktober') // The folder inside Handlelister
+    expect(viewState.files).toHaveLength(0) // No files inside Handlelister
+    expect(viewState.selectedFile).toBeNull() // No file selected
   })
 
   it('Test 3: should set selectedFile when a file is selected', () => {
